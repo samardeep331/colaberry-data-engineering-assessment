@@ -20,7 +20,7 @@ The table's primary key consists of two columns station and date. Also, there ar
 The script for data ingestion is located in the scripts directory. To run the script, use the following commands:
 
 ```bash
-$ git clone repo
+$ git clone git@github.com:samardeep331/colaberry-data-engineering-assessment.git
 $ pip install -r requirements.txt
 $ cd scripts
 $ python ingestion.py
