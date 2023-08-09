@@ -77,7 +77,7 @@ for station in stations:
 ```
 
 ### Problem 4 - REST API
-The code to create the two API endpoints is located in the ```app.py``` file inside the scripts folder. Assuming, the database is populated with the ```sql weather_data``` and ```sql weather_stats``` tables, and the ```requirements.txt``` file is installed, the steps to run the API locally from the root directory are as follows:
+The code to create the two API endpoints is located in the ```app.py``` file inside the scripts folder. Assuming, the database is populated with the ```weather_data``` and ```weather_stats``` tables, and the ```requirements.txt``` file is installed, the steps to run the API locally from the root directory are as follows:
 
 ```bash
 $ cd scripts
@@ -91,3 +91,20 @@ http://127.0.0.1:5000/api/weather/stats
 http://127.0.0.1:5000/api/docs
 ```
 The two api endpoints have optional filters of date and station_id that can be passed along with the request to filter out the results. The user can also specify the page number to look at a specific section of the results.
+
+The unit tests for the API are located inside the ```test_api.py``` file in the tests folder. The unit tests can be run after setting up the database and installing requirements with the following steps:
+
+```bash
+cd tests
+pytest
+```
+### Problem 5 - Deployment
+To deploy the API on AWS, I would follow the following steps:
+
+**1. Setting up PostgreSQL database and configuring environment variables:** Set up PostgreSQL database using Amazon RDS or Amazon Aurora and configure environment variables for the containerized API and Lambda function, allowing them to connect to the PostgreSQL database.
+
+**2. Scheduled ingestion script using AWS Lambda:** Create an AWS Lambda function that executes the ```ingestion.py``` script to populate the database. A Lambda function can be used to run the script at specific intervals using Amazon CloudWatch Events.
+
+**3. Containerize API code:** Create a Dockerfile that defines the environment and dependencies required for the API. Build a Docker image containing the API code, and push it to a container registry like Amazon Elastic Container Registry (ECR).
+
+**4. Create ECS cluster and deploy API using ECS:** Create an ECS cluster where the container will run. Define a task definition that uses the Docker image from ECR and specifies how many containers to run. Then, create a service using this task definition to ensure that the API containers are always running.
