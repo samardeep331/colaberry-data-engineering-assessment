@@ -1,0 +1,422 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Data Engineer Consultant - Assessment",
+    "description": "This is a documentation for the Weather data api for data engineering consultant assessment",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "deepsamar790@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.11"
+  },
+  "paths": {
+    "/api/weather": {
+      "get": {
+        "tags": [
+          "weather"
+        ],
+        "summary": "Get Weather data",
+        "description": "Get Weather data from all stations and dates 10 at a time",
+        "operationId": "getWeather",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          }
+        }
+      }
+    },
+    "/api/weather?date={date}&page={page}": {
+      "get": {
+        "tags": [
+          "weather"
+        ],
+        "summary": "Get weather data by date",
+        "description": "Get data from weather stations by date",
+        "operationId": "findWeatherByDate",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "description": "Date Values that are required to filter by in 'YYYY-MM-DD' format",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "path",
+            "description": "Get weather data from a specific page number",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/api/weather?station_id={station_id}&page={page}": {
+      "get": {
+        "tags": [
+          "weather"
+        ],
+        "summary": "Get weather data by station",
+        "description": "Get data from weather stations by station id",
+        "operationId": "findWeatherByStation",
+        "parameters": [
+          {
+            "name": "station_id",
+            "in": "path",
+            "description": "Station Values that are required to filter by. Eg. 'Station_1'",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "path",
+            "description": "Get weather data from a specific page number",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/api/weather?date={date}&station_id={station_id}&page={page}": {
+      "get": {
+        "tags": [
+          "weather"
+        ],
+        "summary": "Get weather data by station id and date",
+        "description": "Get data from weather stations by station id and date",
+        "operationId": "findWeatherByStationAndDate",
+        "parameters": [
+          {
+            "name": "station_id",
+            "in": "path",
+            "description": "Station Values that are required to filter by. Eg. 'Station_1'",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "date",
+            "in": "path",
+            "description": "Date Values that are required to filter by in 'YYYY-MM-DD' format",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "path",
+            "description": "Get weather data from a specific page number",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/api/weather?page={page}": {
+      "get": {
+        "tags": [
+          "weather"
+        ],
+        "summary": "Get weather data by page number",
+        "description": "Get data from weather stations by the page number",
+        "operationId": "findWeatherByDate",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "path",
+            "description": "Get weather data from a specific page number",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/api/weather/stats": {
+      "get": {
+        "tags": [
+          "weather_stats"
+        ],
+        "summary": "Get summary statistics per station and date",
+        "description": "Returns 10 rows of summary data about weather stats",
+        "operationId": "getWeatherStats",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          }
+        }
+      }
+    },
+    "/api/weather/stats?date={date}&page={page}": {
+      "get": {
+        "tags": [
+          "weather_stats"
+        ],
+        "summary": "Get summary statistics per station and date filtered by date",
+        "description": "Returns 10 rows of summary data about weather stats filtered by date",
+        "operationId": "getWeatherStatsByDate",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "description": "Date Values that are required to filter by in 'YYYY-MM-DD' format",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "path",
+            "description": "Get weather data from a specific page number",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          }
+        }
+      }
+    },
+    "/api/weather/stats?station_id={station_id}&page={page}": {
+      "get": {
+        "tags": [
+          "weather_stats"
+        ],
+        "summary": "Get summary statistics per station and date filtered by station id",
+        "description": "Returns 10 rows of summary data about weather stats filtered by date",
+        "operationId": "getWeatherStatsByStation",
+        "parameters": [
+          {
+            "name": "station_id",
+            "in": "path",
+            "description": "Station Values that are required to filter by. Eg. 'Station_1'.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "path",
+            "description": "Get weather data from a specific page number",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          }
+        }
+      }
+    },
+    "/api/weather/stats?date={date}&station_id={station_id}&page={page}": {
+      "get": {
+        "tags": [
+          "weather_stats"
+        ],
+        "summary": "Get summary statistics per station and date filtered by by station and date",
+        "description": "Get data from weather stations by station id and date",
+        "operationId": "findWeatherStatsByStationAndDate",
+        "parameters": [
+          {
+            "name": "station_id",
+            "in": "path",
+            "description": "Station Values that are required to filter by. Eg. 'Station_1'",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "date",
+            "in": "path",
+            "description": "Date Values that are required to filter by in 'YYYY-MM-DD' format",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "path",
+            "description": "Get weather data from a specific page number",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/api/weather/stats?page={page}": {
+      "get": {
+        "tags": [
+          "weather_stats"
+        ],
+        "summary": "Get summary statistics per station and date filtered by page number",
+        "description": "Get data about weather statistics from a specific page number",
+        "operationId": "findWeatherByDate",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "path",
+            "description": "Get summary statistics from a specific page number",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "weather_data": {
+        "type": "object",
+        "properties": {
+          "station": {
+            "type": "string",
+            "format": "str",
+            "example": "Station_1"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "max_temperature": {
+            "type": "integer",
+            "format": "float32",
+            "example": 45.3
+          },
+          "min_temperature": {
+            "type": "integer",
+            "format": "float32"
+          },
+          "precipitation": {
+            "type": "integer",
+            "format": "float32"
+          }
+        },
+        "xml": {
+          "name": "order"
+        }
+      },
+      "weather_stats": {
+        "type": "object",
+        "properties": {
+          "station": {
+            "type": "string",
+            "format": "str",
+            "example": "Station_1"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "avg_max_temperature": {
+            "type": "integer",
+            "format": "float32",
+            "example": 45.6
+          },
+          "avg_min_temperature": {
+            "type": "integer",
+            "format": "float32"
+          },
+          "total_precipitation": {
+            "type": "integer",
+            "format": "float32"
+          }
+        },
+        "xml": {
+          "name": "order"
+        }
+      }
+    }
+  }
+}
